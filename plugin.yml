@@ -1,0 +1,13 @@
+name: WorldWarp
+main: com.yurijware.bukkit.worldwarp.WorldWarp
+version: 1.0
+website: 
+author: Yurij @ YurijWare
+description: >
+             Warps you to other worlds on the server
+commands:
+  ww:
+    class: com.yurijware.bukkit.worldwarp.commands.Warp
+    description: Warps you to another world
+    usage: |
+           /<command> help - Displays WorldWarp help
