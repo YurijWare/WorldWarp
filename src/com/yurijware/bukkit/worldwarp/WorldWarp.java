@@ -9,10 +9,8 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.Location;
-import org.bukkit.Server;
 import org.bukkit.World;
 import org.bukkit.plugin.PluginDescriptionFile;
-import org.bukkit.plugin.PluginLoader;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.util.config.Configuration;
 import org.bukkit.util.config.ConfigurationNode;
@@ -30,19 +28,12 @@ public class WorldWarp extends JavaPlugin {
 	protected static File maindir = new File("plugins" + File.separatorChar + "WorldWarp");
 	protected static File configFile = new File(maindir, "WorldWarp.yml");
 	
-	private CommandManager manager = new CommandManager(this);
+	private Commands cmd = new Commands(this);
 	private HashMap<String,String> worldPerm;
 	private HashMap<String,Boolean> worldOpsOnly;
 	private HashMap<String,Location> worldLoc;
 	
 	private final HashMap<Player, Boolean> debugees = new HashMap<Player, Boolean>();
-	
-	public WorldWarp(PluginLoader pluginLoader, Server instance,
-			PluginDescriptionFile desc, File folder, File plugin,
-			ClassLoader cLoader) {
-		super(pluginLoader, instance, desc, folder, plugin, cLoader);
-		manager.loadFromDescription(cLoader);
-	}
 	
 	public void onEnable() {
 		plugin = this;
@@ -60,9 +51,7 @@ public class WorldWarp extends JavaPlugin {
 	
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String commandLabel, String[] args) {
-		if(sender instanceof Player)
-			return manager.dispatch((Player)sender, command, commandLabel, args);
-		return false;
+		return cmd.onCommand(sender, command, commandLabel, args);
 	}
 	
 	public boolean isDebugging(final Player player) {

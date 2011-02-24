@@ -1,4 +1,4 @@
-package com.yurijware.bukkit.worldwarp.commands;
+package com.yurijware.bukkit.worldwarp;
 
 import java.util.List;
 
@@ -9,17 +9,13 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
-import com.yurijware.bukkit.worldwarp.ICommandable;
-import com.yurijware.bukkit.worldwarp.WorldWarp;
-
-public class Warp implements ICommandable {
+public class Commands{
 	private final Plugin plugin;
 	
-	public Warp(Plugin plugin){
+	public Commands(Plugin plugin){
 		this.plugin = plugin;
 	}
 	
-	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label,
 			String[] args) {
 		if(args.length == 1){
