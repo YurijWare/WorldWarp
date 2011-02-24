@@ -7,7 +7,6 @@ description: >
              Warps you to other worlds on the server
 commands:
   ww:
-    class: com.yurijware.bukkit.worldwarp.commands.Warp
     description: Warps you to another world
     usage: |
            /<command> help - Displays WorldWarp help
